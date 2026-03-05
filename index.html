@@ -1,0 +1,997 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DR Drywall | Alto Padrão em Drywall</title>
+  <meta name="description" content="Especialistas em drywall residencial e corporativo com acabamento premium." />
+  <style>
+    :root {
+      --bg: #050607;
+      --bg-soft: #0e1013;
+      --ink: #f5f5f5;
+      --muted: #b8bcc4;
+      --silver: #d5d7dc;
+      --line: #2a2d33;
+      --accent: #f0f1f3;
+      --container: 1160px;
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 500px at 85% -10%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(700px 380px at 0% 100%, rgba(255,255,255,.04), transparent 55%),
+        linear-gradient(180deg, #040507, #090b0f 70%, #050607);
+      font-family: "Manrope", "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      letter-spacing: .02em;
+      margin: 0;
+      color: var(--silver);
+    }
+
+    .container { width: min(92%, var(--container)); margin-inline: auto; }
+    .section { padding: 84px 0; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(9px);
+      background: rgba(5, 6, 7, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--silver);
+      box-shadow: inset 0 0 20px rgba(255,255,255,.08);
+    }
+
+    .logo .brand { font-size: 1.4rem; line-height: .9; }
+    .logo small { color: var(--muted); display: block; letter-spacing: .2em; font-size: .68rem; text-transform: uppercase; }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: end;
+    }
+
+    .menu a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .95rem;
+      transition: color .25s;
+    }
+
+    .menu a:hover,
+    .menu a:focus-visible { color: var(--ink); }
+
+    .btn {
+      appearance: none;
+      border: 1px solid #666d78;
+      color: #0b0d10;
+      background: linear-gradient(160deg, #e2e5ea, #a9b0bb);
+      border-radius: 999px;
+      padding: 11px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: .9rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
+      transition: transform .25s, box-shadow .25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover,
+    .btn:focus-visible { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.45); }
+
+    .menu .btn {
+      background: linear-gradient(160deg, #c4cad3, #8f98a6);
+      border-color: #a9b2bf;
+      color: #050607;
+      font-weight: 800;
+    }
+
+    .hero {
+      padding: 76px 0 84px;
+      position: relative;
+      overflow: clip;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .23em;
+      font-size: .72rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 4.1rem);
+      line-height: 1.02;
+      margin-bottom: 18px;
+    }
+
+    .hero p { color: #d7dbe2; max-width: 58ch; }
+
+    .hero-actions {
+      margin-top: 26px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      border: 1px solid var(--line);
+      color: var(--silver);
+      background: rgba(255,255,255,0.02);
+      box-shadow: none;
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 420px;
+      border-radius: calc(var(--radius) + 2px);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.11);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.24)),
+        url("imagens/hero-drywall-real.jpg") center/cover;
+      isolation: isolate;
+    }
+
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, rgba(255,255,255,0.3), transparent 48%);
+      mix-blend-mode: soft-light;
+    }
+
+    .badge {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      background: rgba(5,6,7,.85);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: #ecedf0;
+      font-size: .83rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 14px;
+      pointer-events: none;
+      opacity: .75;
+    }
+
+    .hero-chip {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: .73rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #eff2f7;
+      background: rgba(5,6,7,.6);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-card {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 14px;
+      padding: 12px 13px;
+      width: min(62%, 290px);
+      background: rgba(6,8,11,.72);
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-card b {
+      display: block;
+      color: #f2f4f8;
+      font-size: 1.12rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card span {
+      color: #cfd4de;
+      font-size: .81rem;
+      line-height: 1.35;
+    }
+
+    .strip {
+      border-block: 1px solid var(--line);
+      background: rgba(255,255,255,.01);
+    }
+
+    .strip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 1px;
+    }
+
+    .strip-card {
+      padding: 18px;
+      background: rgba(255,255,255,.01);
+      text-align: center;
+    }
+
+    .strip-card b { display: block; color: var(--silver); font-size: 1.25rem; }
+    .strip-card span { font-size: .84rem; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+
+    .section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+
+    .lead { color: #d0d4dc; max-width: 68ch; margin-top: 0; }
+
+    .features {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      background: linear-gradient(160deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .feature .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      border: 1px solid #4e5561;
+      display: grid;
+      place-items: center;
+      margin-bottom: 10px;
+      color: var(--silver);
+      font-size: .9rem;
+    }
+
+    .feature h3 { font-size: 1.16rem; margin-bottom: 8px; }
+    .feature p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    .cards {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 15px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.008));
+      transition: transform .25s, border-color .25s;
+    }
+
+    .card:hover { transform: translateY(-3px); border-color: #606773; }
+
+    .card-media {
+      aspect-ratio: 16/11;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .card-body { padding: 15px 15px 17px; }
+    .card h3 { font-size: 1.3rem; margin-bottom: 8px; }
+    .card p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+    .gallery {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #0a0c10;
+      position: relative;
+    }
+
+    .gallery img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 5/4;
+      object-fit: cover;
+      filter: saturate(.9) contrast(1.05);
+    }
+
+    .gallery figcaption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      background: rgba(0,0,0,.58);
+      color: #e8eaef;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: .74rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .testimonials {
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.005));
+      border-block: 1px solid var(--line);
+    }
+
+    .quotes {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    blockquote {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: rgba(4,5,7,.7);
+      border-radius: 14px;
+      padding: 20px;
+      color: #d8dce4;
+    }
+
+    blockquote p { margin: 0 0 12px; }
+    blockquote cite { color: #aeb4be; font-size: .9rem; font-style: normal; }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: rgba(255,255,255,.014);
+    }
+
+    .contact-panel {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      background:
+        radial-gradient(420px 240px at 85% 5%, rgba(255,255,255,.08), transparent 65%),
+        rgba(255,255,255,.014);
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-list li {
+      color: #d5d9e0;
+      border: 1px solid #2b3039;
+      border-radius: 12px;
+      background: rgba(6, 8, 11, .65);
+      padding: 11px 12px;
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      align-items: start;
+      gap: 10px;
+    }
+
+    .contact-ico {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid #4f5764;
+      display: grid;
+      place-items: center;
+      color: #dfe3ea;
+      font-size: .75rem;
+      font-weight: 700;
+      background: rgba(255,255,255,.02);
+    }
+
+    .contact-quick {
+      border: 1px solid #353b46;
+      border-radius: 14px;
+      background: linear-gradient(150deg, rgba(255,255,255,.05), rgba(255,255,255,.012));
+      padding: 14px;
+    }
+
+    .contact-quick h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-quick p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    .quick-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .quick-actions .btn {
+      padding: 9px 14px;
+      font-size: .82rem;
+    }
+
+    .status-pill {
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #e3e6ec;
+      font-size: .8rem;
+      border: 1px solid #454d59;
+      border-radius: 999px;
+      padding: 5px 11px;
+      background: rgba(0,0,0,.28);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #8ad39b;
+      box-shadow: 0 0 0 6px rgba(138, 211, 155, .15);
+    }
+
+    form { display: grid; gap: 12px; }
+
+    label { font-size: .9rem; color: #bcc2cc; display: block; }
+
+    input, textarea {
+      width: 100%;
+      margin-top: 6px;
+      background: #0a0d12;
+      border: 1px solid #2b3039;
+      border-radius: 10px;
+      padding: 11px 12px;
+      color: #f1f3f8;
+      font: inherit;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    input:focus, textarea:focus { border-color: #8f96a2; }
+    textarea { min-height: 120px; resize: vertical; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      background:
+        radial-gradient(600px 260px at 20% -10%, rgba(255,255,255,.08), transparent 65%),
+        linear-gradient(180deg, #07090d, #040508);
+    }
+
+    .footer-top {
+      padding: 28px 0 0;
+    }
+
+    .footer-cta {
+      border: 1px solid #323844;
+      border-radius: 16px;
+      padding: 16px;
+      background: linear-gradient(150deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-cta p {
+      margin: 0;
+      color: #e1e5ec;
+      font-size: .95rem;
+    }
+
+    .footer-main {
+      padding: 34px 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr .9fr .9fr;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      border: 1px solid #2b313b;
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(255,255,255,.015);
+    }
+
+    .footer-brand p {
+      margin: 8px 0 0;
+      color: #bfc5cf;
+      font-size: .92rem;
+      max-width: 36ch;
+    }
+
+    .footer-col h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 7px;
+    }
+
+    .footer-list a {
+      text-decoration: none;
+      color: #c7ccd5;
+      font-size: .92rem;
+      transition: color .2s;
+    }
+
+    .footer-list a:hover,
+    .footer-list a:focus-visible {
+      color: #eef1f6;
+    }
+
+    .footer-meta {
+      border-top: 1px solid #232831;
+      padding: 16px 0 20px;
+      font-size: .84rem;
+      color: #9fa6b2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-meta a {
+      color: #c4c9d2;
+      text-decoration: none;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .contact-wrap { grid-template-columns: 1fr; }
+      .cards,
+      .features,
+      .quotes { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .gallery { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .footer-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .menu { gap: 14px; }
+      .menu a { display: none; }
+      .hero { padding-top: 48px; }
+      .strip-grid,
+      .cards,
+      .features,
+      .quotes,
+      .gallery { grid-template-columns: 1fr; }
+      .hero-image { min-height: 300px; }
+      .hero-card { width: calc(100% - 32px); }
+      .hero-chip { font-size: .67rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-meta { justify-content: center; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="logo" aria-label="DR Drywall - Ir para início">
+        <span class="logo-mark">DR</span>
+        <span>
+          <span class="brand">DR Drywall</span>
+          <small>Alto Padrão</small>
+        </span>
+      </a>
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+        <a class="btn" href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Solicitar Orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Drywall Residencial e Corporativo</p>
+          <h1>Transformando Ambientes com Precisão e Elegância.</h1>
+          <p>Especialistas em instalação de drywall com acabamento premium, execução limpa e compromisso real com prazo em cada detalhe do seu projeto.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#projetos">Ver Nossos Projetos</a>
+            <a class="btn btn-outline" href="#contato">Orçamento Rápido</a>
+          </div>
+        </div>
+        <div class="hero-image reveal" role="img" aria-label="Ambiente moderno com forro em drywall e iluminação embutida">
+          <div class="hero-frame" aria-hidden="true"></div>
+          <div class="hero-chip">Detalhamento Premium</div>
+          <div class="hero-card">
+            <b>Acabamento de Alto Padrão</b>
+            <span>Recortes precisos, alinhamento técnico e estrutura pronta para pintura final.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="Diferenciais em números">
+      <div class="container strip-grid">
+        <article class="strip-card"><b>+300</b><span>Projetos Entregues</span></article>
+        <article class="strip-card"><b>98%</b><span>Aprovação Clientes</span></article>
+        <article class="strip-card"><b>10 Anos</b><span>Experiência Técnica</span></article>
+        <article class="strip-card"><b>100%</b><span>Compromisso com Prazo</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container reveal">
+        <h2>Sobre Nós</h2>
+        <p class="lead">A DR Drywall entrega soluções em forros, divisórias e detalhes arquitetônicos com foco em qualidade estrutural, estética refinada e execução organizada do início ao fim.</p>
+        <div class="features">
+          <article class="feature">
+            <div class="icon">01</div>
+            <h3>Instalação Rápida e Limpa</h3>
+            <p>Processo técnico planejado para reduzir sujeira e impacto na rotina do cliente.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">02</div>
+            <h3>Equipe Especializada</h3>
+            <p>Profissionais treinados para obras residenciais e corporativas de alto padrão.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">03</div>
+            <h3>Isolamento Acústico/Térmico</h3>
+            <p>Soluções completas com materiais corretos para conforto e desempenho.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">04</div>
+            <h3>Acabamento Premium</h3>
+            <p>Detalhamento fino em cada recorte, alinhamento e preparação para pintura.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container reveal">
+        <h2>Nossos Serviços</h2>
+        <p class="lead">Soluções sob medida para valorizar seu espaço com design funcional e execução técnica precisa.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-media" style="background-image:url('imagens/servico-forros-real.jpg');"></div>
+            <div class="card-body">
+              <h3>Forros de Drywall</h3>
+              <p>Liso, tabicado e sancas com iluminação embutida para composição moderna.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media" style="background-image:url('imagens/servico-divisorias-real.jpg');"></div>
+            <div class="card-body">
+              <h3>Divisórias de Ambiente</h3>
+              <p>Separações inteligentes para ambientes residenciais e corporativos.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media" style="background-image:url('imagens/servico-nichos-real.jpg');"></div>
+            <div class="card-body">
+              <h3>Nichos e Estantes</h3>
+              <p>Móveis em drywall personalizados para integrar estética e funcionalidade.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-media" style="background-image:url('imagens/servico-isolamento-real.jpg');"></div>
+            <div class="card-body">
+              <h3>Isolamento Acústico/Térmico</h3>
+              <p>Aplicação com lã de vidro ou rocha para conforto e privacidade.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="container reveal">
+        <h2>Portfólio</h2>
+        <p class="lead">Projetos concluídos com padrão estético elevado e impacto visual imediato.</p>
+        <div class="gallery">
+          <figure>
+            <img src="imagens/portfolio-1-real.jpg" alt="Sala com sanca e iluminação indireta" loading="lazy">
+            <figcaption>Residencial</figcaption>
+          </figure>
+          <figure>
+            <img src="imagens/portfolio-2-real.jpg" alt="Escritório com divisórias em drywall" loading="lazy">
+            <figcaption>Corporativo</figcaption>
+          </figure>
+          <figure>
+            <img src="imagens/portfolio-3-real.jpg" alt="Detalhe de acabamento em forro de drywall" loading="lazy">
+            <figcaption>Acabamento</figcaption>
+          </figure>
+          <figure>
+            <img src="imagens/portfolio-4-real.jpg" alt="Quarto com teto em drywall" loading="lazy">
+            <figcaption>Antes e Depois</figcaption>
+          </figure>
+          <figure>
+            <img src="imagens/portfolio-5-real.jpg" alt="Sala moderna com iluminação embutida" loading="lazy">
+            <figcaption>Projeto Luminoso</figcaption>
+          </figure>
+          <figure>
+            <img src="imagens/portfolio-6-real.jpg" alt="Ambiente comercial com divisórias" loading="lazy">
+            <figcaption>Execução Rápida</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container reveal">
+        <h2>Depoimentos</h2>
+        <p class="lead">Confiança construída em cada obra entregue.</p>
+        <div class="quotes">
+          <blockquote>
+            <p>"Equipe extremamente organizada, entregou antes do prazo e o acabamento ficou impecável."</p>
+            <cite>Marina S. • Cliente Residencial</cite>
+          </blockquote>
+          <blockquote>
+            <p>"Precisávamos de divisórias para o escritório com urgência. Resolveram tudo com qualidade e limpeza."</p>
+            <cite>Rafael M. • Gestor Comercial</cite>
+          </blockquote>
+          <blockquote>
+            <p>"Atendimento profissional e resultado sofisticado. O ambiente mudou completamente."</p>
+            <cite>Patrícia L. • Arquiteta Parceira</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container reveal">
+        <h2>Contato</h2>
+        <p class="lead">Envie seu projeto e receba um orçamento rápido.</p>
+        <div class="contact-wrap">
+          <aside class="panel contact-panel">
+            <ul class="contact-list">
+              <li>
+                <span class="contact-ico">WA</span>
+                <span><strong>WhatsApp:</strong> +55 43 8481-0446</span>
+              </li>
+              <li>
+                <span class="contact-ico">EM</span>
+                <span><strong>E-mail:</strong> contato@drdrywall.com.br</span>
+              </li>
+              <li>
+                <span class="contact-ico">HR</span>
+                <span><strong>Atendimento:</strong> Segunda a Sábado, 08h às 18h</span>
+              </li>
+              <li>
+                <span class="contact-ico">IG</span>
+                <span><strong>Instagram:</strong> @drdrywall</span>
+              </li>
+              <li>
+                <span class="contact-ico">FB</span>
+                <span><strong>Facebook:</strong> /drdrywall</span>
+              </li>
+            </ul>
+            <div class="contact-quick">
+              <h3>Resposta Rápida</h3>
+              <p>Projetos enviados até 17h recebem retorno no mesmo dia útil.</p>
+              <div class="quick-actions">
+                <a class="btn" href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20quero%20falar%20com%20o%20atendimento%20r%C3%A1pido." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+                <a class="btn btn-outline" href="#servicos">Ver Serviços</a>
+              </div>
+              <span class="status-pill"><span class="dot" aria-hidden="true"></span>Equipe online agora</span>
+            </div>
+          </aside>
+          <div class="panel">
+            <form id="form-atendimento-rapido">
+              <label>Nome
+                <input type="text" name="nome" placeholder="Seu nome" required>
+              </label>
+              <label>E-mail
+                <input type="email" name="email" placeholder="seuemail@exemplo.com" required>
+              </label>
+              <label>Telefone
+                <input type="tel" name="telefone" placeholder="(00) 00000-0000" required>
+              </label>
+              <label>Descreva seu projeto
+                <textarea name="projeto" placeholder="Tipo de ambiente, metragem aproximada e prazo desejado."></textarea>
+              </label>
+              <button class="btn" type="submit">Enviar Solicitação</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-cta">
+          <p>Pronto para transformar seu ambiente com acabamento premium?</p>
+          <a class="btn" href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Solicitar Orçamento</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-main">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <span class="brand" style="font-size:1.45rem; display:block;">DR Drywall</span>
+          <p>Soluções em drywall com padrão técnico elevado, execução limpa e compromisso com prazo.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Mapa do Site</h3>
+          <ul class="footer-list">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre Nós</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Serviços</h3>
+          <ul class="footer-list">
+            <li><a href="#servicos">Forros de Drywall</a></li>
+            <li><a href="#servicos">Divisórias</a></li>
+            <li><a href="#servicos">Nichos e Estantes</a></li>
+            <li><a href="#servicos">Isolamento</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contato</h3>
+          <ul class="footer-list">
+            <li><a href="mailto:contato@drdrywall.com.br">contato@drdrywall.com.br</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20DR%20Drywall." target="_blank" rel="noopener">+55 43 8481-0446</a></li>
+            <li><a href="#">Instagram @drdrywall</a></li>
+            <li><a href="#">Facebook /drdrywall</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer-meta">
+        <span>© 2026 DR Drywall. Todos os direitos reservados.</span>
+        <span><a href="#contato">Atendimento: Segunda a Sábado, 08h às 18h</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 70, 360)}ms`;
+      io.observe(el);
+    });
+
+    const quickForm = document.getElementById('form-atendimento-rapido');
+    if (quickForm) {
+      quickForm.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const nome = quickForm.nome.value.trim();
+        const email = quickForm.email.value.trim();
+        const telefone = quickForm.telefone.value.trim();
+        const projeto = quickForm.projeto.value.trim();
+
+        const msg = [
+          'Olá, vim pelo site da DR Drywall e quero um orçamento rápido.',
+          '',
+          `Nome: ${nome}`,
+          `E-mail: ${email}`,
+          `Telefone: ${telefone}`,
+          `Projeto: ${projeto || 'Não informado'}`
+        ].join('\n');
+
+        const url = `https://api.whatsapp.com/send?phone=554384810446&text=${encodeURIComponent(msg)}`;
+        window.open(url, '_blank', 'noopener');
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+
