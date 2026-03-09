@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DR Drywall | Alto Padrão em Drywall</title>
-  <meta name="description" content="Especialistas em drywall residencial e corporativo com acabamento premium." />
+  <title>DR Drywall Londrina | Forros, Divisórias e Acabamentos Premium</title>
+  <meta name="description" content="Instalação de drywall alto padrão em Londrina: forros, divisórias, nichos, isolamento acústico/térmico com acabamento premium e prazo garantido. Orçamento grátis via WhatsApp!" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <style>
     :root {
@@ -637,6 +637,34 @@
       transform: none;
     }
 
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25D366;
+      display: grid;
+      place-items: center;
+      z-index: 999;
+      border: 2px solid #ffffff;
+      box-shadow: 0 12px 28px rgba(37, 211, 102, .35);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .whatsapp-float:hover,
+    .whatsapp-float:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(37, 211, 102, .4);
+    }
+
+    .whatsapp-float img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
     @media (max-width: 1050px) {
       .hero-grid,
       .contact-wrap { grid-template-columns: 1fr; }
@@ -661,6 +689,12 @@
       .hero-chip { font-size: .67rem; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-meta { justify-content: center; }
+      .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        width: 56px;
+        height: 56px;
+      }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -694,7 +728,7 @@
         <div class="reveal">
           <p class="eyebrow">Drywall Residencial e Corporativo</p>
           <h1>Transformando Ambientes com Precisão e Elegância.</h1>
-          <p>Especialistas em instalação de drywall com acabamento premium, execução limpa e compromisso real com prazo em cada detalhe do seu projeto.</p>
+          <p>Especialistas em instalação de drywall alto padrão em Londrina, com forros, divisórias, nichos e acabamento premium, execução limpa e compromisso real com prazo.</p>
           <div class="hero-actions">
             <a class="btn" href="#projetos">Ver Nossos Projetos</a>
             <a class="btn btn-outline" href="#contato">Orçamento Rápido</a>
@@ -950,6 +984,10 @@
       </div>
     </div>
   </footer>
+
+  <a href="https://wa.me/+55SEUNUMEROCOMDDD?text=Oi,%20vi%20seu%20site%20DR%20Drywall%20e%20quero%20or%C3%A7amento" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
   <script>
     const revealEls = document.querySelectorAll('.reveal');
