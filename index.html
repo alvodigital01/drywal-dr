@@ -124,6 +124,15 @@
       border-color: #a9b2bf;
       color: #050607;
       font-weight: 800;
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease, border-color .25s ease;
+    }
+
+    .menu .btn:hover,
+    .menu .btn:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      border-color: #c7cfda;
+      box-shadow: 0 14px 28px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.22);
+      filter: brightness(1.05);
     }
 
     .hero {
@@ -844,6 +853,22 @@
       .menu { gap: 14px; }
       .menu a { display: none; }
       .hero { padding-top: 48px; }
+      .hero {
+        text-align: center;
+      }
+      .hero p {
+        margin-inline: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-actions .btn {
+        justify-content: center;
+        width: min(100%, 280px);
+        padding: 13px 24px;
+      }
       .strip-grid,
       .cards,
       .features,
@@ -1128,7 +1153,7 @@
 
   <footer>
     <div class="container footer-meta" style="justify-content:center; text-align:center;">
-      <span>© 2026 DR Drywall. Todos os direitos reservados. - Desenvolvido por Nicolas dev e <a href="https://www.instagram.com/" target="_blank" rel="noopener">Edson</a></span>
+      <span>© 2026 DR Drywall. Todos os direitos reservados. Desenvolvido por <a href="https://www.instagram.com/nicolasdev_oficial/" target="_blank" rel="noopener">Nicolas dev</a></span>
     </div>
   </footer>
 
@@ -1227,6 +1252,14 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 
