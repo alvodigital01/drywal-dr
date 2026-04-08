@@ -73,12 +73,8 @@
       height: 42px;
       border: 1px solid var(--line);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 600;
-      font-size: 1.15rem;
-      color: var(--silver);
+      display: block;
+      object-fit: cover;
       box-shadow: inset 0 0 20px rgba(255,255,255,.08);
     }
 
@@ -327,7 +323,7 @@
       transition: transform .25s, border-color .25s;
     }
 
-    .card:hover { transform: translateY(-3px); border-color: #606773; }
+    .card:hover { transform: translateY(-8px) scale(1.01); border-color: #606773; box-shadow: 0 18px 38px rgba(0,0,0,.2); }
 
     .card-media {
       aspect-ratio: 16/11;
@@ -362,6 +358,12 @@
       aspect-ratio: 5/4;
       object-fit: cover;
       filter: saturate(.9) contrast(1.05);
+      transition: transform .55s ease, filter .55s ease;
+    }
+
+    .gallery figure:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.05) contrast(1.08);
     }
 
     .gallery figcaption {
@@ -404,9 +406,10 @@
 
     .contact-wrap {
       display: grid;
-      grid-template-columns: .95fr 1.05fr;
+      grid-template-columns: .9fr 1.1fr;
       gap: 18px;
       margin-top: 26px;
+      align-items: stretch;
     }
 
     .panel {
@@ -420,55 +423,97 @@
       min-height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
       background:
-        radial-gradient(420px 240px at 85% 5%, rgba(255,255,255,.08), transparent 65%),
-        rgba(255,255,255,.014);
+        radial-gradient(420px 240px at 85% 5%, rgba(255,255,255,.09), transparent 65%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
     }
 
-    .contact-list {
-      list-style: none;
-      padding: 0;
+    .contact-kicker {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #3a414d;
+      background: rgba(255,255,255,.03);
+      color: #dfe5ee;
+      font-size: .76rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .contact-panel h3 {
+      font-size: 1.85rem;
+      line-height: 1.1;
       margin: 0;
+    }
+
+    .contact-intro {
+      margin: 0;
+      color: #c7ced8;
+      max-width: 34ch;
+    }
+
+    .contact-highlights {
       display: grid;
       gap: 10px;
     }
 
-    .contact-list li {
-      color: #d5d9e0;
-      border: 1px solid #2b3039;
-      border-radius: 12px;
-      background: rgba(6, 8, 11, .65);
-      padding: 11px 12px;
-      display: grid;
-      grid-template-columns: 26px 1fr;
-      align-items: start;
+    .contact-note {
+      border: 1px solid #2d333d;
+      border-radius: 14px;
+      background: rgba(6,8,11,.55);
+      padding: 14px;
+    }
+
+    .contact-note strong {
+      display: block;
+      color: #eef1f6;
+      margin-bottom: 4px;
+      font-size: .95rem;
+    }
+
+    .contact-note p {
+      margin: 0;
+      color: #aab2bf;
+      font-size: .92rem;
+    }
+
+    .contact-mini {
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
     }
 
-    .contact-ico {
-      width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      border: 1px solid #4f5764;
-      display: grid;
-      place-items: center;
-      color: #dfe3ea;
-      font-size: .75rem;
-      font-weight: 700;
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #39414d;
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #d8dde5;
+      text-decoration: none;
+      font-size: .86rem;
       background: rgba(255,255,255,.02);
+    }
+
+    .contact-chip strong {
+      color: #fff;
+      font-weight: 700;
     }
 
     .contact-quick {
       border: 1px solid #353b46;
-      border-radius: 14px;
-      background: linear-gradient(150deg, rgba(255,255,255,.05), rgba(255,255,255,.012));
-      padding: 14px;
+      border-radius: 16px;
+      background: linear-gradient(150deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+      padding: 16px;
     }
 
     .contact-quick h3 {
-      font-size: 1.25rem;
+      font-size: 1.12rem;
       margin-bottom: 6px;
     }
 
@@ -510,11 +555,23 @@
       box-shadow: 0 0 0 6px rgba(138, 211, 155, .15);
     }
 
+    .form-intro {
+      margin: 0 0 14px;
+      color: #b6bdc8;
+      max-width: 44ch;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+
     form { display: grid; gap: 12px; }
 
     label { font-size: .9rem; color: #bcc2cc; display: block; }
 
-    input, textarea {
+    input, select, textarea {
       width: 100%;
       margin-top: 6px;
       background: #0a0d12;
@@ -527,9 +584,8 @@
       transition: border-color .2s;
     }
 
-    input:focus, textarea:focus { border-color: #8f96a2; }
-    textarea { min-height: 120px; resize: vertical; }
-
+    input:focus, select:focus, textarea:focus { border-color: #8f96a2; }
+    textarea { min-height: 140px; resize: vertical; }
     footer {
       border-top: 1px solid var(--line);
       color: var(--muted);
@@ -622,8 +678,14 @@
     }
 
     .footer-meta a {
-      color: #c4c9d2;
+      color: inherit;
       text-decoration: none;
+    }
+
+    .footer-meta a:visited,
+    .footer-meta a:hover,
+    .footer-meta a:focus-visible {
+      color: inherit;
     }
 
     .reveal {
@@ -635,6 +697,26 @@
     .reveal.show {
       opacity: 1;
       transform: none;
+    }
+
+    @keyframes floatScene {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes pulseBadge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.0); }
+      50% { box-shadow: 0 0 0 10px rgba(255,255,255,.05); }
+    }
+
+    @keyframes driftGlow {
+      0%, 100% { transform: translate3d(0, 0, 0); opacity: .7; }
+      50% { transform: translate3d(28px, 18px, 0); opacity: 1; }
     }
 
     .whatsapp-float {
@@ -665,6 +747,89 @@
       display: block;
     }
 
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -10% auto auto -8%;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(214,220,230,.13), transparent 70%);
+      filter: blur(10px);
+      animation: driftGlow 11s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-image {
+      transform-origin: center;
+      animation: floatScene 6.8s ease-in-out infinite;
+    }
+
+    .hero-chip {
+      animation: pulseBadge 3.8s ease-in-out infinite;
+    }
+
+    .hero-card {
+      animation: floatCard 5.6s ease-in-out infinite;
+    }
+
+    .strip-card {
+      transform: translateY(14px);
+      opacity: 0;
+      transition: transform .5s ease, opacity .5s ease, background-color .25s ease;
+    }
+
+    .strip-card.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .strip-card:hover {
+      background: rgba(255,255,255,.035);
+    }
+
+    .feature {
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+      border-color: #616977;
+      box-shadow: 0 16px 35px rgba(0,0,0,.18);
+    }
+
+    .gallery figure {
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .gallery figure:hover {
+      transform: translateY(-7px) scale(1.01);
+      border-color: #616977;
+      box-shadow: 0 18px 36px rgba(0,0,0,.22);
+    }
+
+    blockquote {
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    }
+
+    blockquote:hover {
+      transform: translateY(-6px);
+      border-color: #616977;
+      box-shadow: 0 16px 32px rgba(0,0,0,.18);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px) scale(.985);
+      filter: blur(8px);
+      transition: opacity .8s ease, transform .8s ease, filter .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
     @media (max-width: 1050px) {
       .hero-grid,
       .contact-wrap { grid-template-columns: 1fr; }
@@ -683,7 +848,8 @@
       .cards,
       .features,
       .quotes,
-      .gallery { grid-template-columns: 1fr; }
+      .gallery,
+      .form-grid { grid-template-columns: 1fr; }
       .hero-image { min-height: 300px; }
       .hero-card { width: calc(100% - 32px); }
       .hero-chip { font-size: .67rem; }
@@ -705,7 +871,7 @@
   <header class="topbar">
     <div class="container nav">
       <a href="#inicio" class="logo" aria-label="DR Drywall - Ir para início">
-        <span class="logo-mark">DR</span>
+        <img class="logo-mark" src="logodr.jpg" alt="Logo DR Drywall">
         <span>
           <span class="brand">DR Drywall</span>
           <small>Alto Padrão</small>
@@ -747,10 +913,10 @@
 
     <section class="strip" aria-label="Diferenciais em números">
       <div class="container strip-grid">
-        <article class="strip-card"><b>+300</b><span>Projetos Entregues</span></article>
-        <article class="strip-card"><b>98%</b><span>Aprovação Clientes</span></article>
-        <article class="strip-card"><b>10 Anos</b><span>Experiência Técnica</span></article>
-        <article class="strip-card"><b>100%</b><span>Compromisso com Prazo</span></article>
+        <article class="strip-card"><b class="counter" data-target="300" data-prefix="+">0</b><span>Projetos Entregues</span></article>
+        <article class="strip-card"><b class="counter" data-target="98" data-suffix="%">0</b><span>Aprovação Clientes</span></article>
+        <article class="strip-card"><b class="counter" data-target="10" data-suffix=" Anos">0</b><span>Experiência Técnica</span></article>
+        <article class="strip-card"><b class="counter" data-target="100" data-suffix="%">0</b><span>Compromisso com Prazo</span></article>
       </div>
     </section>
 
@@ -880,53 +1046,79 @@
         <p class="lead">Envie seu projeto e receba um orçamento rápido.</p>
         <div class="contact-wrap">
           <aside class="panel contact-panel">
-            <ul class="contact-list">
-              <li>
-                <span class="contact-ico">WA</span>
-                <span><strong>WhatsApp:</strong> +55 43 8481-0446</span>
-              </li>
-              <li>
-                <span class="contact-ico">EM</span>
-                <span><strong>E-mail:</strong> contato@drdrywall.com.br</span>
-              </li>
-              <li>
-                <span class="contact-ico">HR</span>
-                <span><strong>Atendimento:</strong> Segunda a Sábado, 08h às 18h</span>
-              </li>
-              <li>
-                <span class="contact-ico">IG</span>
-                <span><strong>Instagram:</strong> @drdrywall</span>
-              </li>
-              <li>
-                <span class="contact-ico">FB</span>
-                <span><strong>Facebook:</strong> /drdrywall</span>
-              </li>
-            </ul>
-            <div class="contact-quick">
-              <h3>Resposta Rápida</h3>
-              <p>Projetos enviados até 17h recebem retorno no mesmo dia útil.</p>
-              <div class="quick-actions">
-                <a class="btn" href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20quero%20falar%20com%20o%20atendimento%20r%C3%A1pido." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-                <a class="btn btn-outline" href="#servicos">Ver Serviços</a>
+            <span class="contact-kicker">Atendimento objetivo</span>
+            <h3>Fale com a gente sobre a sua obra, nao sobre burocracia.</h3>
+            <p class="contact-intro">A ideia aqui e entender o ambiente, o tipo de acabamento e o prazo que voce precisa. Com isso, nossa resposta ja sai muito mais alinhada com o seu projeto.</p>
+
+            <div class="contact-highlights">
+              <div class="contact-note">
+                <strong>Orcamento mais certeiro</strong>
+                <p>Quanto mais contexto do ambiente, melhor conseguimos orientar a solucao ideal em drywall.</p>
               </div>
-              <span class="status-pill"><span class="dot" aria-hidden="true"></span>Equipe online agora</span>
+              <div class="contact-note">
+                <strong>Resposta sem enrolacao</strong>
+                <p>Voce descreve a necessidade e a equipe retorna com os proximos passos de forma clara.</p>
+              </div>
+            </div>
+
+            <div class="contact-mini">
+              <a class="contact-chip" href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20DR%20Drywall." target="_blank" rel="noopener"><strong>WhatsApp</strong> +55 43 8481-0446</a>
+              <a class="contact-chip" href="mailto:contato@drdrywall.com.br"><strong>E-mail</strong> contato@drdrywall.com.br</a>
             </div>
           </aside>
           <div class="panel">
+            <p class="form-intro">Preencha com as informacoes principais da obra. O formulario foi simplificado para facilitar uma analise inicial mais util.</p>
             <form id="form-atendimento-rapido">
-              <label>Nome
-                <input type="text" name="nome" placeholder="Seu nome" required>
-              </label>
-              <label>E-mail
-                <input type="email" name="email" placeholder="seuemail@exemplo.com" required>
-              </label>
-              <label>Telefone
-                <input type="tel" name="telefone" placeholder="(00) 00000-0000" required>
-              </label>
+              <div class="form-grid">
+                <label>Nome
+                  <input type="text" name="nome" placeholder="Como podemos te chamar?" required>
+                </label>
+                <label>Telefone para retorno
+                  <input type="tel" name="telefone" placeholder="(00) 00000-0000" required>
+                </label>
+              </div>
+              <div class="form-grid">
+                <label>Tipo de ambiente
+                  <select name="ambiente" required>
+                    <option value="">Selecione</option>
+                    <option>Residencial</option>
+                    <option>Comercial</option>
+                    <option>Escritorio</option>
+                    <option>Quarto</option>
+                    <option>Sala</option>
+                    <option>Outro</option>
+                  </select>
+                </label>
+                <label>Servico principal
+                  <select name="servico" required>
+                    <option value="">Selecione</option>
+                    <option>Forro de drywall</option>
+                    <option>Divisoria</option>
+                    <option>Nicho ou estante</option>
+                    <option>Sanca / iluminacao</option>
+                    <option>Isolamento acustico</option>
+                    <option>Outro</option>
+                  </select>
+                </label>
+              </div>
+              <div class="form-grid">
+                <label>Metragem aproximada
+                  <input type="text" name="metragem" placeholder="Ex: 18 m², 40 m², ainda nao sei">
+                </label>
+                <label>Prazo desejado
+                  <select name="prazo">
+                    <option value="">Selecione</option>
+                    <option>O quanto antes</option>
+                    <option>Nas proximas semanas</option>
+                    <option>No proximo mes</option>
+                    <option>Estou pesquisando ainda</option>
+                  </select>
+                </label>
+              </div>
               <label>Descreva seu projeto
-                <textarea name="projeto" placeholder="Tipo de ambiente, metragem aproximada e prazo desejado."></textarea>
+                <textarea name="projeto" placeholder="Conte como e o ambiente, o que voce deseja fazer, se ja existe iluminacao planejada, reforma em andamento ou qualquer detalhe importante."></textarea>
               </label>
-              <button class="btn" type="submit">Enviar Solicitação</button>
+              <button class="btn" type="submit">Enviar projeto</button>
             </form>
           </div>
         </div>
@@ -935,53 +1127,8 @@
   </main>
 
   <footer>
-    <div class="footer-top">
-      <div class="container">
-        <div class="footer-cta">
-          <p>Pronto para transformar seu ambiente com acabamento premium?</p>
-          <a class="btn" href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Solicitar Orçamento</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-main">
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <span class="brand" style="font-size:1.45rem; display:block;">DR Drywall</span>
-          <p>Soluções em drywall com padrão técnico elevado, execução limpa e compromisso com prazo.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Mapa do Site</h3>
-          <ul class="footer-list">
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#sobre">Sobre Nós</a></li>
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#projetos">Projetos</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Serviços</h3>
-          <ul class="footer-list">
-            <li><a href="#servicos">Forros de Drywall</a></li>
-            <li><a href="#servicos">Divisórias</a></li>
-            <li><a href="#servicos">Nichos e Estantes</a></li>
-            <li><a href="#servicos">Isolamento</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3>Contato</h3>
-          <ul class="footer-list">
-            <li><a href="mailto:contato@drdrywall.com.br">contato@drdrywall.com.br</a></li>
-            <li><a href="https://api.whatsapp.com/send?phone=554384810446&text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20DR%20Drywall." target="_blank" rel="noopener">+55 43 8481-0446</a></li>
-            <li><a href="#">Instagram @drdrywall</a></li>
-            <li><a href="#">Facebook /drdrywall</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="container footer-meta">
-        <span>© 2026 DR Drywall. Todos os direitos reservados.</span>
-        <span><a href="#contato">Atendimento: Segunda a Sábado, 08h às 18h</a></span>
-      </div>
+    <div class="container footer-meta" style="justify-content:center; text-align:center;">
+      <span>© 2026 DR Drywall. Todos os direitos reservados. - Desenvolvido por Nicolas dev e <a href="https://www.instagram.com/" target="_blank" rel="noopener">Edson</a></span>
     </div>
   </footer>
 
@@ -1005,23 +1152,72 @@
       io.observe(el);
     });
 
+    const counters = document.querySelectorAll('.counter');
+    const countUp = (el, delay = 0) => {
+      const target = Number(el.dataset.target || 0);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1400;
+
+      setTimeout(() => {
+        const startTime = performance.now();
+
+        const updateCounter = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(target * eased);
+          el.textContent = `${prefix}${current}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            el.textContent = `${prefix}${target}${suffix}`;
+          }
+        };
+
+        requestAnimationFrame(updateCounter);
+      }, delay);
+    };
+
+    if (counters.length) {
+      const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+
+          counters.forEach((counter, index) => {
+            counter.closest('.strip-card')?.classList.add('is-visible');
+            countUp(counter, index * 180);
+          });
+
+          statsObserver.disconnect();
+        });
+      }, { threshold: 0.35 });
+
+      statsObserver.observe(counters[0]);
+    }
     const quickForm = document.getElementById('form-atendimento-rapido');
     if (quickForm) {
       quickForm.addEventListener('submit', event => {
         event.preventDefault();
 
         const nome = quickForm.nome.value.trim();
-        const email = quickForm.email.value.trim();
-        const telefone = quickForm.telefone.value.trim();
+        const telefoneRetorno = quickForm.telefone.value.trim();
+        const ambiente = quickForm.ambiente.value.trim();
+        const servico = quickForm.servico.value.trim();
+        const metragem = quickForm.metragem.value.trim();
+        const prazo = quickForm.prazo.value.trim();
         const projeto = quickForm.projeto.value.trim();
 
         const msg = [
-          'Olá, vim pelo site da DR Drywall e quero um orçamento rápido.',
+          'Olá, vim pelo site da DR Drywall e quero solicitar um orçamento.',
           '',
-          `Nome: ${nome}`,
-          `E-mail: ${email}`,
-          `Telefone: ${telefone}`,
-          `Projeto: ${projeto || 'Não informado'}`
+          `Nome: ${nome}` ,
+          `Telefone para retorno: ${telefoneRetorno}` ,
+          `Ambiente: ${ambiente || 'Não informado'}` ,
+          `Serviço principal: ${servico || 'Não informado'}` ,
+          `Metragem aproximada: ${metragem || 'Não informada'}` ,
+          `Prazo desejado: ${prazo || 'Não informado'}` ,
+          `Descrição do projeto: ${projeto || 'Não informada'}`
         ].join('\n');
 
         const url = `https://api.whatsapp.com/send?phone=554384810446&text=${encodeURIComponent(msg)}`;
@@ -1031,6 +1227,24 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
